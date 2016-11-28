@@ -37,5 +37,4 @@
     exit 1
   fi
   echo -e "Importing to /srv/${CONTAINERNAME}"
-
-cp 2cimport/* /srv/${CONTAINERNAME}"
+  cp ./2cimport/* /srv/${CONTAINERNAME}
