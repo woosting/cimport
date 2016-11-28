@@ -32,6 +32,11 @@
   clear
   echo -e "Please stat the container name to import to:"
   read CONTAINERNAME
+  
+  if [ -z "${CONTAINERNAME}" ]
+    then echo "Please provide a containername."
+    exit 1
+  fi
   echo -e "Importing to /srv/${CONTAINERNAME}
 
 # cp * /srv/${CONTAINERNAME}"
