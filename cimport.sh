@@ -29,7 +29,6 @@
 
 # LOGIC
 
-  clear
   echo -e "State target container name:"
   read CONTAINERNAME
   
