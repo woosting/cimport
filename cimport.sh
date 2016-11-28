@@ -41,6 +41,6 @@
       exit 1
     else
       echo -e "Importing ${SOURCEPATH} to ${TARGETPATH}"
-      cp ${SOURCEPATH} ${TARGETPATH}
+      cp -r ${SOURCEPATH} ${TARGETPATH}
     fi
   fi
