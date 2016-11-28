@@ -27,12 +27,14 @@
   echo -e "State target container name:"
   read CONTAINERNAME
   
-  if [ -z "${CONTAINERNAME}" ]
-    then echo "Please provide a containername."
+  if [ -z "${CONTAINERNAME}" ]; then
+    echo "Please provide a containername!"
     exit 1
+  elif [ ! -d "${TARGETPATHPREFIX}${CONTAINERNAME}" ]; then
+    echo "Container does not exist, please provide an existing containername!"
+    exit 1
+  else 
+    TARGETPATH="${TARGETPATHPREFIX}${CONTAINERNAME}${TARGETPATHPOSTFIX}..."
+    echo -e "Importing ${SOURCEPATH} to ${TARGETPATH}"
+#    cp ${SOURCEPATH} ${TARGETPATH}
   fi
-  
-  TARGETPATH="${TARGETPATHPREFIX}${CONTAINERNAME}${TARGETPATHPOSTFIX}..."
-    
-  echo -e "Importing ${SOURCEPATH} to ${TARGETPATH}"
-# cp ${SOURCEPATH} ${TARGETPATH}
