@@ -37,7 +37,7 @@
   else
     TARGETPATH="${TARGETPATHPREFIX}${CONTAINERNAME}${TARGETPATHPOSTFIX}"
     if [ ! -d "${TARGETPATH}" ]; then
-      echo "${TARGETPATH} is not a directory..."
+      echo "${TARGETPATH} is not a (target) directory..."
       exit 1
     else
       echo -e "Importing ${SOURCEPATH} to ${TARGETPATH}"
