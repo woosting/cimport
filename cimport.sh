@@ -35,4 +35,4 @@
   
   
   echo -e "Importing to /srv/${CONTAINERNAME}"
-  cp  /srv/lxc/${CONTAINERNAME}/rootfs/tmp/
+  cp ${SOURCEPATH} ${TARGETPATH}
