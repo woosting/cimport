@@ -37,6 +37,6 @@
     then echo "Please provide a containername."
     exit 1
   fi
-  echo -e "Importing to /srv/${CONTAINERNAME}
+  echo -e "Importing to /srv/${CONTAINERNAME}"
 
 # cp * /srv/${CONTAINERNAME}"
