@@ -38,4 +38,4 @@
   fi
   echo -e "Importing to /srv/${CONTAINERNAME}"
 
-# cp * /srv/${CONTAINERNAME}"
+cp 2cimport/* /srv/${CONTAINERNAME}"
