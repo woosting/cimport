@@ -24,8 +24,7 @@
 
 # LOGIC
 
-  echo -e "State target container name:"
-  read CONTAINERNAME
+  echo -e "State target container name:" read CONTAINERNAME
   
   if [ -z "${CONTAINERNAME}" ]; then
     echo "Please provide a containername!"
