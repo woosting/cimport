@@ -19,6 +19,8 @@
 
 # CONFIGURATION:
   SOURCEPATH="/root/cimports/2cimport"
+  TARGETPATHPREFIX="/srv/lxc/"
+  TARGETPATHPOSTFIX="/rootfs/tmp/"
 
 # LOGIC
 
@@ -30,7 +32,7 @@
     exit 1
   fi
   
-  TARGETPATH="/srv/lxc/${CONTAINERNAME}/rootfs/tmp/"
+  TARGETPATH="${TARGETPATHPREFIX}${CONTAINERNAME}${TARGETPATHPOSTFIX}"
     
   echo -e "Importing to ${TARGETPATH}"
 #  cp ${SOURCEPATH} ${TARGETPATH}
