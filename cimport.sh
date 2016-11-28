@@ -27,4 +27,11 @@
   CONTAINERNAME=''
 
 
-echo -e "cp * /srv/${containername}"
+# LOGIC
+
+  clear
+  echo -e "Please stat the container name to import to:"
+  read -sn 1 CONTAINERNAME
+
+
+echo -e "cp * /srv/${CONTAINERNAME}"
