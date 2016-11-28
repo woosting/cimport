@@ -19,8 +19,6 @@
 
 # CONFIGURATION:
   SOURCEPATH="/root/cimports/2cimport"
-  TARGETPATH="/srv/lxc/${CONTAINERNAME}/rootfs/tmp/"
-  CONTAINERNAME=''
 
 # LOGIC
 
@@ -31,6 +29,8 @@
     then echo "Please provide a containername."
     exit 1
   fi
+  
+  TARGETPATH="/srv/lxc/${CONTAINERNAME}/rootfs/tmp/"
     
   echo -e "Importing to ${TARGETPATH}"
 #  cp ${SOURCEPATH} ${TARGETPATH}
