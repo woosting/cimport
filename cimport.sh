@@ -31,7 +31,7 @@
     echo "Please provide a containername!"
     exit 1
   elif [ ! -d "${TARGETPATHPREFIX}${CONTAINERNAME}" ]; then
-    echo "Container does not exist, please provide an existing containername!"
+    echo "${CONTAINERNAME} does not exist, please provide an EXISTING containername!"
     exit 1
   else 
     TARGETPATH="${TARGETPATHPREFIX}${CONTAINERNAME}${TARGETPATHPOSTFIX}..."
