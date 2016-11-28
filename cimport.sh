@@ -34,5 +34,5 @@
   
   
   
-  echo -e "Importing to /srv/${CONTAINERNAME}"
-  cp ${SOURCEPATH} ${TARGETPATH}
+  echo -e "Importing to ${TARGETPATH}"
+#  cp ${SOURCEPATH} ${TARGETPATH}
