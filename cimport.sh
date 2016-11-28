@@ -35,7 +35,7 @@
     echo "${CONTAINERNAME} does not exist, please provide an EXISTING containername!"
     exit 1
   else 
-    TARGETPATH="${TARGETPATHPREFIX}${CONTAINERNAME}${TARGETPATHPOSTFIX}..."
+    TARGETPATH="${TARGETPATHPREFIX}${CONTAINERNAME}${TARGETPATHPOSTFIX}"
     echo -e "Importing ${SOURCEPATH} to ${TARGETPATH}"
 #    cp ${SOURCEPATH} ${TARGETPATH}
   fi
