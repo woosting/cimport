@@ -32,10 +32,15 @@
     echo "Please provide a containername!"
     exit 1
   elif [ ! -d "${TARGETPATHPREFIX}${CONTAINERNAME}" ]; then
-    echo "${CONTAINERNAME} does not exist, please provide an EXISTING containername!"
+    echo "${CONTAINERNAME} is not a directory, does a container with that name exist?"
     exit 1
-  else 
+  else
     TARGETPATH="${TARGETPATHPREFIX}${CONTAINERNAME}${TARGETPATHPOSTFIX}"
-    echo -e "Importing ${SOURCEPATH} to ${TARGETPATH}"
-#    cp ${SOURCEPATH} ${TARGETPATH}
+    if [ ! -d "${TARGETPATH}" ]; then
+      echo "${TARGETPATH} is not a directory..."
+      exit 1
+    else
+      echo -e "Importing ${SOURCEPATH} to ${TARGETPATH}"
+#      cp ${SOURCEPATH} ${TARGETPATH}
+    fi
   fi
