@@ -30,7 +30,7 @@
 # LOGIC
 
   clear
-  echo -e "Please state the container name to import to:"
+  echo -e "State target container name:"
   read CONTAINERNAME
   
   if [ -z "${CONTAINERNAME}" ]
