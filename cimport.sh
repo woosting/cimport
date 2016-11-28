@@ -31,7 +31,7 @@
 
   clear
   echo -e "Please stat the container name to import to:"
-  read -sn 1 CONTAINERNAME
+  read CONTAINERNAME
+  echo -e "Importing to /srv/${CONTAINERNAME}
 
-
-echo -e "cp * /srv/${CONTAINERNAME}"
+# cp * /srv/${CONTAINERNAME}"
