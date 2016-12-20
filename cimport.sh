@@ -44,5 +44,7 @@
     else
       echo -e "Importing ${SOURCEPATH} to ${TARGETPATH}"
       cp -r ${SOURCEPATH} ${TARGETPATH}
+      lxc-attach -n ${CONTAINERNAME} chmod 700 /tmp/cinit/cinit.sh
+      lxc-attach -n ${CONTAINERNAME} /tmp/cinit/cinit.sh > /tmp/cinit/cinit.log
     fi
   fi
