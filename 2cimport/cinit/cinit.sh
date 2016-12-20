@@ -23,14 +23,14 @@
 
     read -p "State the username: " TARGETUSERNAME
     if [ -z "${TARGETUSERNAME}" ]; then
-      echo "No username received; not executing genereal init script (you can still run it from within the container)!"
+      echo "${NOKCOL}No username received!${RCOL} Not executing genereal init script (you can still run it from within the container)!"
       exit 1
     elif [ "${TARGETUSERNAME}" = "root" ]; then
-      echo "${TARGETUSERNAME} is not allowed; not executing genereal init script (you can still run it from within the container)!"
+      echo "${NOKCOL}${TARGETUSERNAME} is not allowed!${RCOL} Not executing genereal init script (you can still run it from within the container)!"
       exit 1
     else
       echo -e " "
-      echo -e ">Executing general init script creating ${TARGETUSERNAME}:" && \
+      echo -e ">Executing general init script creating ${TARGETUSERNAME} as a user:" && \
       echo -e " "
       /tmp/cinit/init.sh -u ${TARGETUSERNAME}
     fi
