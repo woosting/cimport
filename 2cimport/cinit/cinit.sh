@@ -13,7 +13,7 @@
     echo -e " "
     echo -e ">Installing wget:" && \
     echo -e " "
-    apt-get apt-get install -y wget && \
+    apt-get install -y wget && \
 
     echo -e " "
     echo -e ">Downloading general init script:" && \
