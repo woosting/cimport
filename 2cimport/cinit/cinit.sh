@@ -23,10 +23,10 @@
 
     read -p "State the username: " TARGETUSERNAME
     if [ -z "${TARGETUSERNAME}" ]; then
-      echo "${NOKCOL}No username received!${RCOL} Not executing genereal init script (you can still run it from within the container)!"
+      echo -e "${NOKCOL}No username received!${RCOL} Not executing genereal init script (you can still run it from within the container)!"
       exit 1
     elif [ "${TARGETUSERNAME}" = "root" ]; then
-      echo "${NOKCOL}${TARGETUSERNAME} is not allowed!${RCOL} Not executing genereal init script (you can still run it from within the container)!"
+      echo -e "${NOKCOL}${TARGETUSERNAME} is not allowed!${RCOL} Not executing genereal init script (you can still run it from within the container)!"
       exit 1
     else
       echo -e " "
