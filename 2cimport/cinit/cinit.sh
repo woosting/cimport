@@ -12,9 +12,9 @@
 # EXECUTION
 
   echo -e " "
-  echo -e ">Updating repository cache, upgrading distro, and installing wget:" && \
+  echo -e ">Installing wget:" && \
   echo -e " "
-  apt-get update && appt-get dist-upgrade -y && apt-get install -y wget && \
+  apt-get apt-get install -y wget && \
 
   echo -e " "
   echo -e ">Downloading general init script:" && \
