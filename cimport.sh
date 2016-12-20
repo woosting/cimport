@@ -19,7 +19,7 @@
 
 # CONFIGURATION
 
-  SOURCEPATH="/root/cimports/2cimport"
+  SOURCEPATH="/root/cimports/2cimport/*"
   TARGETPATHPREFIX="/srv/lxc/"
   TARGETPATHPOSTFIX="/rootfs/tmp/"
 
