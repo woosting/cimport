@@ -17,7 +17,7 @@
   apt-get update && appt-get dist-upgrade -y && apt-get install -y wget && \
 
   echo -e " "
-  echo -e ">Downloading init script:" && \
+  echo -e ">Downloading general init script:" && \
   echo -e " "
   wget -P /tmp/cinit/ https://raw.githubusercontent.com/woosting/baseInst/master/init.sh && \
   chmod 700 /tmp/cinit/init.sh && \
