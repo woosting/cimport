@@ -47,8 +47,8 @@
       cp -r ${SOURCEPATH} ${TARGETPATH}
       echo -e "STARTING execution of scripts in ${CONTAINERNAME}:"
       echo -e " "
-      lxc-attach -n ${CONTAINERNAME} chmod 700 /tmp/cinit/cinit.sh && \
-      lxc-attach -n ${CONTAINERNAME} /tmp/cinit/cinit.sh && \
+      lxc-attach -n ${CONTAINERNAME} -- chmod 700 /tmp/cinit/cinit.sh && \
+      lxc-attach -n ${CONTAINERNAME} -- /tmp/cinit/cinit.sh && \
       echo -e " " && \
       echo -e "FINISHED executing of scripts in ${CONTAINERNAME}"
     fi
