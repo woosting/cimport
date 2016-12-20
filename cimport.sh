@@ -19,7 +19,7 @@
 
 # CONFIGURATION
 
-  SOURCEPATH="/root/cimports/2cimport"
+  SOURCEPATH="/root/cimports/2cimport/*"
   TARGETPATHPREFIX="/srv/lxc/"
   TARGETPATHPOSTFIX="/rootfs/tmp/"
 
@@ -42,7 +42,14 @@
       echo "${TARGETPATH} is not a (target) directory..."
       exit 1
     else
+      echo -e " "
       echo -e "Importing ${SOURCEPATH} to ${TARGETPATH}"
       cp -r ${SOURCEPATH} ${TARGETPATH}
+      echo -e "STARTING execution of scripts in ${CONTAINERNAME}:"
+      echo -e " "
+      lxc-attach -n ${CONTAINERNAME} chmod 700 /tmp/cinit/cinit.sh && \
+      lxc-attach -n ${CONTAINERNAME} /tmp/cinit/cinit.sh && \
+      echo -e " " && \
+      echo -e "FINISHED executing of scripts in ${CONTAINERNAME}"
     fi
   fi
