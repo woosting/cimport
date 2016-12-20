@@ -10,18 +10,27 @@
 
 
 # EXECUTION
+    echo -e " "
+    echo -e ">Installing wget:" && \
+    echo -e " "
+    apt-get apt-get install -y wget && \
 
-  echo -e " "
-  echo -e ">Installing wget:" && \
-  echo -e " "
-  apt-get apt-get install -y wget && \
+    echo -e " "
+    echo -e ">Downloading general init script:" && \
+    echo -e " "
+    wget -P /tmp/cinit/ https://raw.githubusercontent.com/woosting/baseInst/master/init.sh && \
+    chmod 700 /tmp/cinit/init.sh && \
 
-  echo -e " "
-  echo -e ">Downloading general init script:" && \
-  echo -e " "
-  wget -P /tmp/cinit/ https://raw.githubusercontent.com/woosting/baseInst/master/init.sh && \
-  chmod 700 /tmp/cinit/init.sh && \
-
-  echo -e " "
-  echo -e "${EMCOL}Usage: /tmp/cinit/init.sh -u <user>${RCOL}"
-  echo -e " "
+    read -p "State the username: " TARGETUSERNAME
+    if [ -z "${TARGETUSERNAME}" ]; then
+      echo "No username received; not executing genereal init script (you can still run it from within the container)!"
+      exit 1
+    elif [ "${TARGETUSERNAME}" = "root" ]; then
+      echo "${TARGETUSERNAME} is not allowed; not executing genereal init script (you can still run it from within the container)!"
+      exit 1
+    else
+      echo -e " "
+      echo -e ">Executing general init script creating ${TARGETUSERNAME}:" && \
+      echo -e " "
+      /tmp/cinit/init.sh -u ${TARGETUSERNAME}
+    fi
