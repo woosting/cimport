@@ -68,12 +68,12 @@
     echo "Please provide a containername!"
     exit 1
   elif [ ! -d "${TARGETPATHPREFIX}${TARGETCONTAINER}" ]; then
-    echo -e "${NOKCOL}${TARGETCONTAINER} is not a directory!${RCOL} Does a container with that name exist?"
+    echo -e "${NOKCOL}${TARGETCONTAINER}${RCOL} is not a directory, does a container with that name exist?"
     exit 1
   else
     TARGETPATH="${TARGETPATHPREFIX}${TARGETCONTAINER}${TARGETPATHPOSTFIX}"
     if [ ! -d "${TARGETPATH}" ]; then
-      echo -e "${NOKCOL}${TARGETPATH} is not a (target) directory!${RCOL}"
+      echo -e "${NOKCOL}${TARGETPATH}${RCOL} is not a (target) directory!"
       exit 1
     else
       echo -e " "
