@@ -23,6 +23,14 @@
   TARGETPATHPREFIX="/srv/lxc/"
   TARGETPATHPOSTFIX="/rootfs/tmp/"
 
+  function printHelp () {
+    echo -e "USAGE: cimport [-c containername] [-u username] [-h]"
+    echo -e "         -c Specifies the target container's name (must exist)."
+    echo -e "         -u Specifies the target container's username (will be created)."
+    echo -e "         -h Prints this help."
+    echo -e "If no options are provided an interactive shell will commence."
+  }
+
   function getInput () {
     local OPTIND c u h option
     while getopts c:u:h option
@@ -31,14 +39,13 @@
        in
         c) TARGETCONTAINERFLAG=(${OPTARG});;
         u) TARGETUSERFLAG=(${OPTARG});;
-        h) PRINTHELP=$((PRINTHELP+1));;
+        h) printHelp
+           exit 0
+        ;;
+	\?) printHelp
+            exit 1
+        ;;
       esac
-      if [ "${PRINTHELP}" != "0" ]; then
-        echo -e "USAGE: cimport [-c containername] [-u username] [-h]"
-        echo -e "         -c Specifies the target container's name (must exist)."
-        echo -e "         -u Specifies the target container's username (will be created)."
-        echo -e "         -h Prints this help."
-      fi
     done
   }
           
@@ -66,20 +73,19 @@
     else
       echo -e " "
       echo -e "Importing ${SOURCEPATH} to ${TARGETPATH}"
-#deb      cp -r ${SOURCEPATH} ${TARGETPATH}
+      cp -r ${SOURCEPATH} ${TARGETPATH}
       echo -e "STARTING execution of scripts in ${TARGETCONTAINER}:"
       echo -e " "
-#deb      lxc-attach -n ${TARGETCONTAINER} -- chmod 700 /tmp/cinit/cinit.sh && \
+      lxc-attach -n ${TARGETCONTAINER} -- chmod 700 /tmp/cinit/cinit.sh && \
       if [ -z "${TARGETUSERFLAG}" ]; then
-        lxc-attach -n ${TARGETCONTAINER} -- /tmp/!!!cinit/cinit.sh        
+        lxc-attach -n ${TARGETCONTAINER} -- /tmp/cinit/cinit.sh        
       else
-        lxc-attach -n ${TARGETCONTAINER} -- /tmp/!!!cinit/cinit.sh -u ${TARGETUSERFLAG}
+        lxc-attach -n ${TARGETCONTAINER} -- /tmp/cinit/cinit.sh -u ${TARGETUSERFLAG}
       fi
       if [ "$?" == "0" ]; then
         echo -e " "
         echo -e "FINISHED executing of scripts in ${TARGETCONTAINER}"
       else
-        echo -e "Oops something went wrong!"
         exit 1
       fi
     fi
