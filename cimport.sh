@@ -48,6 +48,8 @@
     
 # LOGIC
 
+  getInput "$@"
+
   if [ -z "${TARGETCONTAINERFLAG}" ]; then
     read -p "State target container name: " TARGETCONTAINER
   else
