@@ -73,7 +73,7 @@
   else
     TARGETPATH="${TARGETPATHPREFIX}${TARGETCONTAINER}${TARGETPATHPOSTFIX}"
     if [ ! -d "${TARGETPATH}" ]; then
-      echo "${NOKCOL}${TARGETPATH} is not a (target) directory!${RCOL}"
+      echo -e "${NOKCOL}${TARGETPATH} is not a (target) directory!${RCOL}"
       exit 1
     else
       echo -e " "
