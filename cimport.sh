@@ -71,11 +71,11 @@
       echo -e " "
       lxc-attach -n ${TARGETCONTAINER} -- chmod 700 /tmp/cinit/cinit.sh && \
       if [ -z "${TARGETUSERFLAG}" ]; then
-        lxc-attach -n ${TARGETCONTAINER} -- /tmp/cinit/cinit.sh -u ${TARGETUSERFLAG} && \
+        lxc-attach -n ${TARGETCONTAINER} -- /tmp/cinit/cinit.sh -u ${TARGETUSERFLAG}
       else
-        lxc-attach -n ${TARGETCONTAINER} -- /tmp/cinit/cinit.sh && \
+        lxc-attach -n ${TARGETCONTAINER} -- /tmp/cinit/cinit.sh
       fi
-      echo -e " " && \
+      echo -e " "
       echo -e "FINISHED executing of scripts in ${TARGETCONTAINER}"
     fi
   fi
