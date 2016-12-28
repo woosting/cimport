@@ -53,7 +53,7 @@
     if [ -z "${TARGETUSERFLAG}" ]; then
       read -p "State the username: " TARGETUSER
     else
-      TARGETCONTAINER=${TARGETUSERFLAG}
+      TARGETUSER=${TARGETUSERFLAG}
     fi
     if [ -z "${TARGETUSER}" ]; then
       echo -e "${NOKCOL}No username received!${RCOL} Not executing genereal init script (you can still run it from within the container)!"
