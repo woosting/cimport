@@ -38,9 +38,9 @@
       esac
       if [ ${PRINTHELP} -gt 0 ]; then
         echo -e "USAGE: cimport [-c containername] [-u username] [-h]"
-        echo -e "         -c Specifies the target container's name (must exist)"
-        echo -e "         -u Specifies the target container's username (will be created)"
-        echo -e "         -h Prints this help"
+        echo -e "         -c Specifies the target container's name (must exist)."
+        echo -e "         -u Specifies the target container's username (will be created)."
+        echo -e "         -h Prints this help."
       fi
     done
   }
@@ -74,9 +74,9 @@
       echo -e " "
       lxc-attach -n ${TARGETCONTAINER} -- chmod 700 /tmp/cinit/cinit.sh && \
       if [ -z "${TARGETUSERFLAG}" ]; then
-        lxc-attach -n ${TARGETCONTAINER} -- /tmp/cinit/cinit.sh -u ${TARGETUSERFLAG} && \
+        lxc-attach -n ${TARGETCONTAINER} -- /tmp/cinit/cinit.sh && \        
       else
-        lxc-attach -n ${TARGETCONTAINER} -- /tmp/cinit/cinit.sh && \
+        lxc-attach -n ${TARGETCONTAINER} -- /tmp/cinit/cinit.sh -u ${TARGETUSERFLAG} && \
       fi
       echo -e " "
       echo -e "FINISHED executing of scripts in ${TARGETCONTAINER}"
