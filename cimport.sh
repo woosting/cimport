@@ -23,21 +23,50 @@
   TARGETPATHPREFIX="/srv/lxc/"
   TARGETPATHPOSTFIX="/rootfs/tmp/"
 
+  function printHelp () {
+    echo -e "USAGE: cimport [-c containername] [-u username] [-h]"
+    echo -e "         -c Specifies the target container's name (must exist)."
+    echo -e "         -u Specifies the target container's username (will be created)."
+    echo -e "         -h Prints this help."
+    echo -e "If no options are provided an interactive shell will commence."
+  }
 
+  function getInput () {
+    local OPTIND c u h option
+    while getopts c:u:h option
+    do
+      case "${option}"
+       in
+        c) TARGETCONTAINERFLAG=(${OPTARG});;
+        u) TARGETUSERFLAG=(${OPTARG});;
+        h) printHelp
+           exit 0
+        ;;
+	\?) printHelp
+            exit 1
+        ;;
+      esac
+    done
+  }
+          
+    
 # LOGIC
 
-# echo -e "State target container name:"
-# read CONTAINERNAME
-  read -p "State target container name: " CONTAINERNAME
-  
-  if [ -z "${CONTAINERNAME}" ]; then
+  getInput "$@"
+
+  if [ -z "${TARGETCONTAINERFLAG}" ]; then
+    read -p "State target container name: " TARGETCONTAINER
+  else
+    TARGETCONTAINER=${TARGETCONTAINERFLAG}
+  fi
+  if [ -z "${TARGETCONTAINER}" ]; then
     echo "Please provide a containername!"
     exit 1
-  elif [ ! -d "${TARGETPATHPREFIX}${CONTAINERNAME}" ]; then
-    echo "${CONTAINERNAME} is not a directory, does a container with that name exist?"
+  elif [ ! -d "${TARGETPATHPREFIX}${TARGETCONTAINER}" ]; then
+    echo "${TARGETCONTAINER} is not a directory, does a container with that name exist?"
     exit 1
   else
-    TARGETPATH="${TARGETPATHPREFIX}${CONTAINERNAME}${TARGETPATHPOSTFIX}"
+    TARGETPATH="${TARGETPATHPREFIX}${TARGETCONTAINER}${TARGETPATHPOSTFIX}"
     if [ ! -d "${TARGETPATH}" ]; then
       echo "${TARGETPATH} is not a (target) directory..."
       exit 1
@@ -45,11 +74,19 @@
       echo -e " "
       echo -e "Importing ${SOURCEPATH} to ${TARGETPATH}"
       cp -r ${SOURCEPATH} ${TARGETPATH}
-      echo -e "STARTING execution of scripts in ${CONTAINERNAME}:"
+      echo -e "STARTING execution of scripts in ${TARGETCONTAINER}:"
       echo -e " "
-      lxc-attach -n ${CONTAINERNAME} -- chmod 700 /tmp/cinit/cinit.sh && \
-      lxc-attach -n ${CONTAINERNAME} -- /tmp/cinit/cinit.sh && \
-      echo -e " " && \
-      echo -e "FINISHED executing of scripts in ${CONTAINERNAME}"
+      lxc-attach -n ${TARGETCONTAINER} -- chmod 700 /tmp/cinit/cinit.sh && \
+      if [ -z "${TARGETUSERFLAG}" ]; then
+        lxc-attach -n ${TARGETCONTAINER} -- /tmp/cinit/cinit.sh        
+      else
+        lxc-attach -n ${TARGETCONTAINER} -- /tmp/cinit/cinit.sh -u ${TARGETUSERFLAG}
+      fi
+      if [ "$?" == "0" ]; then
+        echo -e " "
+        echo -e "FINISHED executing of scripts in ${TARGETCONTAINER}"
+      else
+        exit 1
+      fi
     fi
   fi
