@@ -23,6 +23,11 @@
   TARGETPATHPREFIX="/srv/lxc/"
   TARGETPATHPOSTFIX="/rootfs/tmp/"
 
+  EMCOL='\033[1m'     #EMPHASIS color (default: BOLD)
+  NOKCOL='\033[0;31m' #NOT OK color (default: RED)
+  OKCOL='\033[0;32m'  #OK color (default: GREEN)
+  RCOL='\033[0m'      #RESET color (default: terminal default)
+
   function printHelp () {
     echo -e "USAGE: cimport [-c containername] [-u username] [-h]"
     echo -e "         -c Specifies the target container's name (must exist)."
@@ -63,12 +68,12 @@
     echo "Please provide a containername!"
     exit 1
   elif [ ! -d "${TARGETPATHPREFIX}${TARGETCONTAINER}" ]; then
-    echo "${TARGETCONTAINER} is not a directory, does a container with that name exist?"
+    echo "${NOKCOL}${TARGETCONTAINER} is not a directory!${RCOL} Does a container with that name exist?"
     exit 1
   else
     TARGETPATH="${TARGETPATHPREFIX}${TARGETCONTAINER}${TARGETPATHPOSTFIX}"
     if [ ! -d "${TARGETPATH}" ]; then
-      echo "${TARGETPATH} is not a (target) directory..."
+      echo "${NOKCOL}${TARGETPATH} is not a (target) directory!${RCOL}"
       exit 1
     else
       echo -e " "
