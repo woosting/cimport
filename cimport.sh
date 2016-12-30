@@ -29,10 +29,12 @@
   RCOL='\033[0m'      #RESET color (default: terminal default)
 
   function printHelp () {
-    echo -e "USAGE: cimport [-c containername] [-u username] [-h]"
-    echo -e "         -c Specifies the target container's name (must exist)."
-    echo -e "         -u Specifies the target container's username (will be created)."
-    echo -e "         -h Prints this help."
+    echo -e "CIMPORTS - Container IMPORTS (2016, GNU GENERAL PUBLIC LICENSE)\n"
+    echo -e "USAGE: cimport [-c containername] [-u username] [-h]\n"
+    echo -e "Arguments:"
+    echo -e "   -c Specifies the target container's name (must exist)."
+    echo -e "   -u Specifies the target container's username (will be created)."
+    echo -e "   -h Prints this help."
     echo -e "If no options are provided an interactive shell will commence."
   }
 
