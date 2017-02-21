@@ -14,7 +14,6 @@
   function printHelp () {
      echo -e "USAGE: cinit [-u username] [-h]"
      echo -e "         -u Specifies the target container's username (will be created)."
-     echo -e "         -u Specifies the target container's username (will be created)."
      echo -e "         -h Prints this help."
      echo -e "If no options are provided an interactive shell will commence."
   }
