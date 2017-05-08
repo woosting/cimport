@@ -28,6 +28,9 @@
   OKCOL='\033[0;32m'  #OK color (default: GREEN)
   RCOL='\033[0m'      #RESET color (default: terminal default)
 
+
+# FUNCTIONS
+
   function printHelp () {
     echo -e "CIMPORTS - Container IMPORTS (2016, GNU GENERAL PUBLIC LICENSE)\n"
     echo -e "USAGE: cimport [[-c containername] [-u username]] | [-h]\n"
