@@ -19,7 +19,7 @@
 
 # CONFIGURATION
 
-  SOURCEPATH="/srv/scripts/2cimport/*"
+  SOURCEPATH="/srv/scripts/cimports/2cimport/*"
   TARGETPATHPREFIX="/srv/lxc/"
   TARGETPATHPOSTFIX="/rootfs/tmp/"
 
@@ -27,6 +27,9 @@
   NOKCOL='\033[0;31m' #NOT OK color (default: RED)
   OKCOL='\033[0;32m'  #OK color (default: GREEN)
   RCOL='\033[0m'      #RESET color (default: terminal default)
+
+
+# FUNCTIONS
 
   function printHelp () {
     echo -e "CIMPORTS - Container IMPORTS (2016, GNU GENERAL PUBLIC LICENSE)\n"
