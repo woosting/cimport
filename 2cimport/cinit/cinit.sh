@@ -50,7 +50,7 @@
   echo -e " "
   wget -P /tmp/cinit/ https://raw.githubusercontent.com/woosting/baseInst/master/init.sh && \
   chmod 700 /tmp/cinit/init.sh
-  if [ $? -ne 1 ]; then
+  if [ $? -ne 0 ]; then
     echo -e "Error"
     exit 1
   fi
