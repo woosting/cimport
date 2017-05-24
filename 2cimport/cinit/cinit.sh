@@ -43,8 +43,11 @@
   echo -e " "
   echo -e ">Installing wget:" && \
   echo -e " "
-  apt-get install -y wget && \
-
+  apt update && apt install -y wget && \
+  if [ $? -ne 0 ]; then
+    echo -e "${NOKCOL}ERROR!${RCOL} wget not installed!"
+    exit 1
+  fi
   echo -e " "
   echo -e ">Downloading general init script:" && \
   echo -e " "
