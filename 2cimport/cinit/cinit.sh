@@ -43,13 +43,20 @@
   echo -e " "
   echo -e ">Installing wget:" && \
   echo -e " "
-  apt-get install -y wget && \
-
+  apt update && apt install -y wget && \
+  if [ $? -ne 0 ]; then
+    echo -e "${NOKCOL}ERROR!${RCOL} wget not installed!"
+    exit 1
+  fi
   echo -e " "
   echo -e ">Downloading general init script:" && \
   echo -e " "
   wget -P /tmp/cinit/ https://raw.githubusercontent.com/woosting/baseInst/master/init.sh && \
-  chmod 700 /tmp/cinit/init.sh && \
+  chmod 700 /tmp/cinit/init.sh
+  if [ $? -ne 0 ]; then
+    echo -e "${NOKCOL}ERROR!${RCOL}"
+    exit 1
+  fi
   if [ -z "${TARGETUSERFLAG}" ]; then
     read -p "State the username: " TARGETUSER
   else
